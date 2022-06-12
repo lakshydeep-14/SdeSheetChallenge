@@ -1,0 +1,18 @@
+#include <bits/stdc++.h> 
+int subarraysXor(vector<int> &arr, int x)
+{
+    //    Write your code here.
+    int res=0,xorr=0;
+    map<int,int> freq;
+    for(auto it:arr){
+        xorr=xorr^it;
+        if(xorr==x){
+            res++;
+        }
+        if(freq.find(xorr^x)!=freq.end()){
+            res+=freq[xorr^x];
+        }
+        freq[xorr]+=1;
+    }
+    return res;
+}
